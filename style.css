@@ -10,7 +10,7 @@ body {
     min-height: 100vh; 
     margin: 0; 
     padding: 20px; 
-    background-color: rgba(77, 100, 134, 0.676); 
+    background-color: rgba(64, 111, 181, 0.676); 
     transition: background-color 0.4s ease;
 }
 
@@ -128,7 +128,7 @@ body.room-on #startLink {
     font-weight: bold;
     letter-spacing: 0.03em;
     cursor: pointer;
-    color: #2F3F7B;
+    color: #4e6ad1;
 
     /* --- Changes to create a sharp Window-style element --- */
     background-color: #ffffff;         /* Clean window background color */
@@ -139,7 +139,7 @@ body.room-on #startLink {
 }
 
 #startBtn:hover  {
-    background-color: #b6cd86;         /* Matches layout hover highlights */
+    background-color: #4e6ad1;         /* Matches layout hover highlights */
     transform: translate(2px, 2px);    /* Simulates a realistic mechanical click down */
     box-shadow: 2px 2px 0px #0a3054;   /* Shrinks the shadow when pressed */
 }
