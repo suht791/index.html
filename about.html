@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installation View</title>
+    <!-- Links your layout structure to your external stylesheet -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Geist+Pixel&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style4.css">
+</head>
+<body>
+
+    <!-- 1. Artist Details Stack -->
+    <h1 class="artist-name">Haegue Yang</h1>
+    <h2 class="artist-name">Illusions of Life</h2>
+    <h3 class="artist-name">2009</h3>
+    <h4 class="artist-name">Installation piece</h4>
+
+    <!-- 2. Keep only ONE image tag in the HTML structure -->
+    <div class="main-image-container">
+        <!-- FIXED: Extension changed to .JPG to perfectly match your JS list array below -->
+        <img src="installation.jpeg" alt="Main Installation" class="featured-img" id="clickable-img">
+    </div>
+
+    <!-- 3. Description text at the Bottom -->
+    <p class="description-text">
+       I chose this piece because of the variety of textures and objects it contains. I wanted to experiment with incorporating these textures into my website.
+    </p>
+
+    <!-- 4. RESTORED HTML: This block was missing from your markup floor plan! -->
+    <div class="navigation-panel">
+        <a href="index.html" class="back-link">
+            
+            <button class="back-btn">← Back</button>
+        </a>
+    </div>
+
+    <!-- 5. Multi-image loop engine -->
+    <script>
+        const imageElement = document.getElementById('clickable-img');
+
+        const myImages = [
+            'installation.jpeg',
+            'second-image.jpeg',
+            'third-image.jpeg',
+            'fourth-image.jpeg'
+        ];
+
+        let currentIndex = 0;
+
+        imageElement.addEventListener('click', () => {
+            currentIndex = currentIndex + 1;
+
+            if (currentIndex >= myImages.length) {
+                currentIndex = 0;
+            }
+
+            imageElement.src = myImages[currentIndex];
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Geist+Pixel&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style2.css">
+    <title>Camera Game</title>
+
+    <style>
+        body {
+            background: rgba(149, 193, 255, 0.85);  
+            color: #0a3054;
+            font-family: 'Geist Pixel', sans-serif;
+            text-align: center;
+        }
+
+        canvas {
+            display: block;
+            margin: 20px auto;
+            border: 2px solid #0a3054;
+            background: #e2ffa8;
+            image-rendering: auto;
+        }
+        
+        /* Highlight the target message to make it easily readable */
+        #target-message {
+            font-family: 'Doto', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            color: #3a6a46;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Camera Game</h1>
+    <!-- Added a prompt element so the player knows what to click -->
+    <div id="target-message">Find and click the: <span id="target-name">...</span></div>
+
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const targetNameEl = document.getElementById('target-name');
+
+        const itemTypes = [
+            { name: "Fan", image: new Image(), src: "fan.png" },
+            { name: "Wires", image: new Image(), src: "wires.png" },
+            { name: "Metal Blind", image: new Image(), src: "blind.png" },
+            { name: "Metal Grid", image: new Image(), src: "metalgrid.png" },
+            { name: "Wire Lamp", image: new Image(), src: "ceilingwire.png" },
+            { name: "Ball of Yarn", image: new Image(), src: "yellowyarn.png" }
+        ];
+
+        itemTypes.forEach(item => {
+            item.image.onload = () => { drawGame(); };
+            item.image.src = item.src;
+        });
+
+        let score = 0;
+        let targetsList = [];
+        let currentTarget = null; // Tracks the correct item for the current round
+
+        function createRandomTarget(typeInfo) {
+            return {
+                x: 80 + Math.random() * (canvas.width - 160),
+                y: 150 + Math.random() * (canvas.height - 230),
+                radius: 40,
+                name: typeInfo.name,
+                image: typeInfo.image
+            };
+        }
+
+        function startNewRound() {
+            targetsList = [];
+
+            // 1. Shuffle the items and pick 4 unique ones for this round
+            const shuffled = [...itemTypes].sort(() => Math.random() - 0.5);
+            const roundItems = shuffled.slice(0, 4);
+
+            roundItems.forEach(item => {
+                targetsList.push(createRandomTarget(item));
+            });
+
+            // 2. Pick ONE of the 4 items on screen to be the correct target
+            currentTarget = targetsList[Math.floor(Math.random() * targetsList.length)];
+            
+            // 3. Display the target name to the player
+            targetNameEl.innerText = currentTarget.name.toUpperCase();
+
+            drawGame();
+        }
+
+        function drawGame() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = 'high';
+
+            targetsList.forEach(target => {
+                // Draw the white item card
+                ctx.fillStyle = "white";
+                ctx.fillRect(
+                    target.x - 40,
+                    target.y - 40,
+                    80,
+                    80
+                );
+
+                // Draw the item image
+                if (target.image.complete && target.image.naturalWidth > 0) {
+                    const imageSize = 58;
+                    ctx.drawImage(
+                        target.image,
+                        Math.floor(target.x - imageSize / 2),
+                        Math.floor(target.y - imageSize / 2),
+                        imageSize,
+                        imageSize
+                    );
+                }
+            });
+
+            ctx.fillStyle = "#0a3054";
+            ctx.font = "20px Arial";
+            ctx.textAlign = "left";
+            ctx.fillText("Score: " + score, 20, 30);
+        }
+
+        canvas.addEventListener("click", function(event) {
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = event.clientX - rect.left;
+            const mouseY = event.clientY - rect.top;
+
+            let clickedItem = null;
+
+            // Check if the click hit any item
+            targetsList.forEach(target => {
+                const distance = Math.hypot(mouseX - target.x, mouseY - target.y);
+                if (distance < target.radius) {
+                    clickedItem = target;
+                }
+            });
+
+            // Verification logic
+            if (clickedItem) {
+                if (clickedItem.name === currentTarget.name) {
+                    // Correct click! Gain points and advance
+                    score++;
+                    startNewRound();
+                } else {
+                    // Wrong click! Penalize or display error
+                    alert("Wrong item! That was the " + clickedItem.name);
+                    // You can optionally reset the score here: score = 0;
+                    startNewRound();
+                }
+            }
+        });
+
+        startNewRound();
+    </script>
+</body>
+</html>
+

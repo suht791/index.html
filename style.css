@@ -1,0 +1,176 @@
+/* ==========================================
+   GLOBAL LAYOUT & BACKGROUND RESETS
+   ========================================== */
+body {
+    font-family: "Doto", sans-serif; /* Fixed duplicate font-family syntax */
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    min-height: 100vh; 
+    margin: 0; 
+    padding: 20px; 
+    background-color: rgba(77, 100, 134, 0.676); 
+    transition: background-color 0.4s ease;
+}
+
+body.room-on {
+    background-color: #f6ffef;
+}
+
+/* ==========================================
+   LAMP CONTAINER FRAME WORK 
+   ========================================== */
+.lamp-border-box {
+    border: 1px solid #fffff5;       
+    border-radius: 0;                
+    height: 500px;                   
+    width: 550px;                    
+    margin-bottom: 24px;         
+    display: flex;
+    flex-direction: column;       
+    align-items: center;          
+    padding: 40px 60px 80px 60px; 
+    transition: border-color 0.4s ease;
+}
+
+body.room-on .lamp-border-box {
+    border-color: #0a3054;
+}
+
+/* ==========================================
+   INNER ASSET POSITIONING
+   ========================================== */
+.ceiling-container {
+    margin-top: -76px;               
+    display: flex;
+    justify-content: center;
+}
+
+.ceiling-img {
+    margin-top: -85px;               
+    width: 1000px; 
+    height: auto; 
+    max-width: 100%;
+}
+
+#bulb {
+    width: 80px;
+    height: 40px;               
+    background-color: #666; 
+    border-radius: 0px 0px 40px 40px; 
+    margin-top: -149px;          
+    transition: all 0.3s ease; 
+} 
+
+body.room-on #bulb {
+    background-color: #FFFF8B;
+    box-shadow: 0 0 30px 10px #FFFF8B, 0 0 60px 20px rgba(255, 242, 117, 0.5);
+}
+
+/* ==========================================
+   BUTTON STRUCTURAL LAYOUT
+   ========================================== */
+.button-group {
+    /* Removed the accidentally nested #switchBtn block from here */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px; 
+}
+
+/* Correctly styled #switchBtn outside of other blocks */
+/* Correctly styled #switchBtn outside of other blocks */
+#switchBtn {
+    font-family: 'Doto', sans-serif;
+    font-weight: 700; 
+    font-size: 16px;  
+    padding: 4px 12px;           /* Classic, tighter padding */
+    cursor: pointer;
+    border-radius: 0;            /* Strictly square corners */
+    background-color: #c0c0c0;   /* Standard Windows 95 gray */
+    color: #000000;              /* Sharp black text */
+    
+    /* The magic 3D Bevel effect: Light top/left, dark bottom/right */
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+    
+    /* Ensures black outer outline typical of default Windows buttons */
+    outline: 1px solid #000000;
+    outline-offset: -2px; 
+}
+
+/* Optional: Active click state to sink the button into the screen */
+#switchBtn:active {
+    border-top: 2px solid #808080;
+    border-left: 2px solid #808080;
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    padding: 5px 11px 3px 13px; /* Shifts text slightly down/right when clicked */
+}
+
+
+#startLink {
+    display: none; 
+    text-decoration: none;
+}
+
+body.room-on #startLink {
+    display: block;
+}
+#startBtn{
+    font-family: 'Doto', sans-serif;
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    color: #2F3F7B;
+
+    /* --- Changes to create a sharp Window-style element --- */
+    background-color: #ffffff;         /* Clean window background color */
+    border: 2px solid rgba(149, 193, 255, 0.85);         /* Defined window border framing */
+    border-radius: 0px;                /* Sharp corners instead of rounded */
+    box-shadow: 2px 2px 0px #0a3054;   /* Hard geometric drop shadow */
+    transition: all 0.15s ease-in-out;
+}
+
+#startBtn:hover  {
+    background-color: #b6cd86;         /* Matches layout hover highlights */
+    transform: translate(2px, 2px);    /* Simulates a realistic mechanical click down */
+    box-shadow: 2px 2px 0px #0a3054;   /* Shrinks the shadow when pressed */
+}
+
+#startBtn:active {
+    transform: translate(4px, 4px);    /* Full engagement alignment */
+    box-shadow: 0px 0px 0px #0a3054;
+}
+
+#startBtn {
+    font-family: 'Doto', sans-serif; 
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    background-color: #a5e8ac; 
+    color: #fffff5;
+    font-size: 16px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+
+    /* --- Crucial changes for the circle shape --- */
+    width: 80px;          /* Set equal width */
+    height: 80px;         /* Set equal height */
+    border-radius: 50%;   /* Forces it into a perfect circle */
+    padding: 0;           /* Remove standard padding so text centers properly */
+    display: inline-flex; /* Centers text vertically and horizontally */
+    align-items: center;
+    justify-content: center;
+}
+
+
+#startBtn:hover {
+    transform: scale(1.05);
+}

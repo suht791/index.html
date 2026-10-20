@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Display: Sample Layout</title>
+    <!-- Links your layout structure to your external style sheet -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Geist+Pixel&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+
+    <!-- Top Grid Layout Section -->
+    <section class="grid-container lamp-layout">
+        
+        <!-- LEFT COLUMN CONTAINER: Holds only the Camera Card -->
+        <div class="left-column-group" style="display: flex; flex-direction: column; gap: 16px;">
+            <div class="fan-card" style="width: 100%;">
+                <div class="img-wrapper">
+                    <img src="camera.png" alt="fan">
+                    <p class="points-badge">your inventory</p>
+                </div>
+                <p class="lamp-caption">camera</p>
+            </div>
+        </div>
+        
+        <!-- RIGHT COLUMN CONTAINER: Holds "Items to Find" and the Grid of Cards -->
+        <div class="right-column-group" style="display: flex; flex-direction: column; gap: 16px;">
+            <h3 class="section-title">Items to Find:</h3>
+            
+            <div class="grid-container more-news">
+                <div class="lamp-card">
+                    <div class="img-wrapper">
+                        <img src="fan.png" alt="green lamp">
+                        <p class="points-badge">+5 PTS</p>
+                    </div>
+                    <p class="lamp-caption">Fan</p>
+                </div>
+               
+                <div class="lamp-card">
+                    <div class="img-wrapper">
+                        <img src="wires.png" alt="grid">
+                        <p class="points-badge">+20 PTS</p>
+                    </div>
+                    <p class="lamp-caption">Wires</p>
+                </div>
+
+                <div class="lamp-card">
+                    <div class="img-wrapper">
+                        <img src="blinds.png" alt="nara">
+                        <p class="points-badge">+2 PTS</p>
+                    </div>
+                    <p class="lamp-caption">Metal Blind</p>
+                </div>
+                 
+                <div class="lamp-card">
+                    <div class="img-wrapper">
+                        <img src="metalgrid.png" alt="paper">
+                        <p class="points-badge">+5 PTS</p>
+                    </div>
+                    <p class="lamp-caption">Metal Grid</p>
+                </div>
+
+                <div class="lamp-card">
+                    <div class="img-wrapper">
+                        <img src="ceilingwire.png" alt="ceiling lamp">
+                        <p class="points-badge">+10 PTS</p>
+                    </div>
+                    <p class="lamp-caption">Wire Lamp</p>
+                </div>
+                  
+                <div class="lamp-card">
+                    <div class="img-wrapper">
+                        <img src="yellowyarn.png" alt="tomato">
+                        <p class="points-badge">+50 PTS</p>
+                    </div>
+                    <p class="lamp-caption">Ball of Yarn</p>
+                </div>
+            </div> 
+        </div>
+
+    </section>
+
+    <!-- FIXED: Removed the stray unclosed anchor link that was breaking your code block -->
+    <div class="game-control-panel">
+        <button id="gameStartBtn" class="play-btn">START GAME</button>
+        <div id="countdown-display" class="timer-text"></div>
+    </div>
+
+    <!-- About Section -->
+    <div class="about-container">
+        <a href="about.html" class="about-link">
+            <button class="about-btn">About</button>
+        </a>
+    </div>
+
+    <!-- Countdown and Redirect Logic -->
+    <script>
+        const gameStartBtn = document.getElementById('gameStartBtn');
+        const countdownDisplay = document.getElementById('countdown-display');
+
+        gameStartBtn.addEventListener('click', () => {
+            gameStartBtn.style.display = 'none';
+            let timeLeft = 3; 
+            
+            countdownDisplay.textContent = `Game starting in: ${timeLeft}`;
+            
+            const countdownTimer = setInterval(() => {
+                timeLeft--;
+                if (timeLeft > 0) {
+                    countdownDisplay.textContent = `Game starting in: ${timeLeft}`;
+                } else {
+                    clearInterval(countdownTimer);
+                    countdownDisplay.textContent = "GO!";
+                    
+                    // FIXED: Changed destination path from game.html to gamepage.html to match your layout reference
+                    window.location.href = "gamepage.html"; 
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Lamp Layout</title>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Main Container Box -->
+    <div class="lamp-border-box">
+        <div class="ceiling-container">
+            <img src="ceilinglamps.png" alt="Ceiling Image" class="ceiling-img">
+        </div>
+        <div id="bulb"></div>
+    </div>
+    
+    <!-- Interaction Buttons Section -->
+    <div class="button-group">
+        <button id="switchBtn">ON</button>
+        
+        <!-- Destination Link Wrapper -->
+        <a href="treasuremap.html" id="startLink">
+            <button id="startBtn">START</button>
+        </a>
+    </div>
+
+    <!-- JavaScript Interaction Logic -->
+    <script>
+        const switchBtn = document.getElementById('switchBtn');
+        const body = document.body;
+
+        switchBtn.addEventListener('click', () => {
+            body.classList.toggle('room-on');
+            if (body.classList.contains('room-on')) {
+                switchBtn.textContent = 'OFF';
+            } else {
+                switchBtn.textContent = 'ON';
+            }
+        });
+    </script>
+</body>
+</html>

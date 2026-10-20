@@ -1,0 +1,249 @@
+/* =======================================================
+   GLOBAL RESETS & CORE TYPOGRAPHY
+   ======================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f6ffef;
+    padding: 40px;
+    font-family: 'Geist Pixel', sans-serif;
+}
+
+.section-title {
+    padding: 0 0 8px 0;         
+    font-size: 14px;
+    letter-spacing: 0.03em;
+    border-bottom: 1px solid #0a3054; 
+    color: #0a3054; 
+    width: 100%;
+}
+
+/* Retaining legacy definitions just in case */
+h2 {
+    font-size: 14px;
+    letter-spacing: 0.03em;
+}
+
+h3 {
+    font-size: 14px;
+    letter-spacing: 0.03em;
+}
+
+h4 {
+    padding: 0 0 8px 0;
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: 0.03em;
+    border-bottom: 1px solid #0a3054; 
+}
+
+/* =======================================================
+   GRID FRAMEWORK CONTROLS
+   ======================================================= */
+.grid-container {
+    display: grid;
+    column-gap: 16px;
+    row-gap: 20px;
+}
+
+.lamp-layout {
+    grid-template-columns: 2fr 3fr; 
+    align-items: start;
+    margin: 16px 0 40px 0;
+}
+
+.more-news {
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 0;
+}
+
+.wellness {
+    grid-template-columns: repeat(5, 1fr);
+    margin: 16px 0 40px 0;
+}
+
+/* =======================================================
+   CARD WRAPPERS & RESPONSIVE IMAGES
+   ======================================================= */
+.fan-card, .lamp-card {
+    background-color: transparent;
+    border: 1px solid transparent; 
+    border-radius: 8px;
+    padding: 12px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.25s ease-in-out; 
+}
+
+.fan-card:hover, .lamp-card:hover {
+    background-color: #e2ffa8;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transform: translateY(-2px); 
+}
+
+.img-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.grid-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.lamp-caption {
+    font-size: 11px;
+    color: #555;
+    margin-top: 8px;
+    text-align: center;
+    letter-spacing: 0.02em;
+}
+
+/* =======================================================
+   HOVER OVERLAY POINTS SYSTEM
+   ======================================================= */
+.points-badge {
+    font-family: 'Doto', sans-serif;
+    font-weight: bold;
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(149, 193, 255, 0.85); 
+    color: #fff275;                          
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.fan-card:hover .points-badge,
+.lamp-card:hover .points-badge {
+    opacity: 1;
+}
+
+/* =======================================================
+   ABOUT BUTTON STYLING
+   ======================================================= */
+/* =======================================================
+   ABOUT BUTTON STYLING
+   ======================================================= */
+.about-container {
+    font-family: 'Doto', sans-serif;
+    width: 100%;
+    text-align: center;
+    padding: 16px 0;
+    border-top: 1px solid #0a3054; 
+    margin-top: 20px;
+}
+
+.about-link {
+    text-decoration: none; 
+}
+
+.about-btn {
+    font-family: 'Doto', sans-serif;
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    color: #2F3F7B;
+
+    /* --- Changes to create a sharp Window-style element --- */
+    background-color: #ffffff;         /* Clean window background color */
+    border: 2px solid rgba(149, 193, 255, 0.85);         /* Defined window border framing */
+    border-radius: 0px;                /* Sharp corners instead of rounded */
+    box-shadow: 2px 2px 0px #0a3054;   /* Hard geometric drop shadow */
+    transition: all 0.15s ease-in-out;
+}
+
+.about-btn:hover {
+    background-color: #e2ffa8;         /* Matches layout hover highlights */
+    transform: translate(2px, 2px);    /* Simulates a realistic mechanical click down */
+    box-shadow: 2px 2px 0px #0a3054;   /* Shrinks the shadow when pressed */
+}
+
+.about-btn:active {
+    transform: translate(4px, 4px);    /* Full engagement alignment */
+    box-shadow: 0px 0px 0px #0a3054;
+}
+
+/* =======================================================
+   GAME DASHBOARD & COUNTDOWN PANEL STYLES
+   ======================================================= */
+   /* =======================================================
+   GAME DASHBOARD & COUNTDOWN PANEL STYLES
+   ======================================================= */
+/* =======================================================
+   GAME DASHBOARD & COUNTDOWN PANEL STYLES
+   ======================================================= */
+.game-control-panel {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+    min-height: 50px;
+}
+
+.play-btn {
+    background-color: #a5e8ac; 
+    color: #ffffff;
+    
+    /* Kept 'Doto' font family */
+    font-family: 'Doto', sans-serif; 
+    
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(47, 63, 123, 0.2);
+    transition: all 0.2s ease-in-out;
+
+    /* --- Reverted back to the original box layout properties --- */
+    padding: 12px 36px;        /* Restored original side-padding spacing */
+    border-radius: 25px;       /* Restored the regular rounded-box corner capsule shape */
+    display: inline-block;     /* Restored normal block layout flow */
+    width: auto;               /* Allowed width to expand automatically around text */
+    height: auto;              /* Allowed height to scale naturally */
+}
+
+.play-btn:hover {
+    background-color: #3a5cc4; 
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(47, 63, 123, 0.3);
+}
+
+.play-btn:active {
+    transform: translateY(0);
+}
+
+.timer-text {
+    font-family: 'Doto', sans-serif; 
+    font-size: 22px;
+    font-weight: bold;
+    color: #2F3F7B;
+    letter-spacing: 0.02em;
+    text-align: center;
+    transition: all 0.2s ease;
+}

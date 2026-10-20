@@ -1,0 +1,115 @@
+/* =======================================================
+   GLOBAL RESETS & VERTICAL CORES
+   ======================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #e6ffb5;
+    padding: 40px 20px;
+    font-family: 'Geist Pixel', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;      
+    justify-content: center;
+    min-height: 100vh;        
+}
+
+/* =======================================================
+   TYPOGRAPHY & ASSET RULES
+   ======================================================= */
+.artist-name {
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    color: #0a3054;           
+    text-align: center;
+    margin: 4px 0; 
+}
+
+h1.artist-name { font-size: 26px; }
+h2.artist-name { font-size: 20px; font-weight: normal; color: #333; } 
+h3.artist-name { font-size: 16px; font-weight: normal; color: #666; }
+h4.artist-name { 
+    font-size: 14px; 
+    font-weight: normal; 
+    color: #6b7169;
+    margin-bottom: 24px; 
+}
+
+.main-image-container {
+    width: 100%;
+    max-width: 650px;         
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;      
+    cursor: pointer;          
+    transition: transform 0.25s ease-in-out;
+}
+
+.main-image-container:hover {
+    transform: scale(1.01);   
+}
+
+.featured-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px;       
+    box-shadow: 0 4px 16px rgba(10, 48, 84, 0.08); 
+}
+
+.description-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555555;
+    text-align: center;       
+    max-width: 600px;         
+}
+
+/* =======================================================
+   NAVIGATION PANEL & BACK BUTTON STYLING
+   ======================================================= */
+.navigation-panel {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 32px;        
+}
+
+.back-link {
+    text-decoration: none;   
+}
+.back-btn {
+    font-family: 'Doto', sans-serif;
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    color: #2F3F7B;
+
+    /* --- Changes to create a sharp Window-style element --- */
+    background-color: #ffffff;         /* Clean window background color */
+    border: 2px solid rgba(149, 193, 255, 0.85);         /* Defined window border framing */
+    border-radius: 0px;                /* Sharp corners instead of rounded */
+    box-shadow: 2px 2px 0px #0a3054;   /* Hard geometric drop shadow */
+    transition: all 0.15s ease-in-out;
+}
+
+.back-btn:hover  {
+    background-color: #e2ffa8;         /* Matches layout hover highlights */
+    transform: translate(2px, 2px);    /* Simulates a realistic mechanical click down */
+    box-shadow: 2px 2px 0px #0a3054;   /* Shrinks the shadow when pressed */
+}
+
+.back-btn:active {
+    transform: translate(4px, 4px);    /* Full engagement alignment */
+    box-shadow: 0px 0px 0px #0a3054;
+}
+
+
+
